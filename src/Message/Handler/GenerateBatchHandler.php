@@ -41,6 +41,7 @@ use Symfony\Component\Validator\ConstraintViolationInterface;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 use Symfony\Component\Workflow\Registry;
 use Symfony\Component\Workflow\Workflow;
+use Symfony\Component\Workflow\WorkflowInterface;
 use Throwable;
 use Twig\Environment;
 use Webmozart\Assert\Assert;
@@ -299,7 +300,7 @@ final class GenerateBatchHandler implements MessageHandlerInterface
         $this->urlGenerator->setContext($this->initialRequestContext);
     }
 
-    private function getWorkflow(FeedInterface $feed): Workflow
+    private function getWorkflow(FeedInterface $feed): WorkflowInterface
     {
         try {
             $workflow = $this->workflowRegistry->get($feed, FeedGraph::GRAPH);
